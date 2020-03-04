@@ -11,6 +11,26 @@ board = [
     [0,4,9,2,0,6,0,0,7]
 ]
 
+s = '123456789123456789123456789123456789123456789123456789123456789123456789123456789'
+s2 = '....717..1.2..25868.2388...129.9.89184...9488.7..3..161899.92.5.9.589.7942.72..12'
+def string_to_list(s):
+    main_list =[]
+    sub_list = []
+    for i, j in enumerate(s):
+        if len(sub_list) == 9:
+            main_list.append(sub_list)
+            sub_list = []
+        try:
+            sub_list.append(int(j))
+        except:
+            sub_list.append(0)
+    main_list.append(sub_list)
+    return main_list
+
+
+board2 = string_to_list(s2)
+
+
 def print_puzzle(board):
     for y in range(len(board)):
         if y % 3 == 0 and y != 0:
@@ -31,7 +51,6 @@ def find_empty(board):
 
     return False
 
-print(find_empty(board))
 
 def valid_check(board, num, yx):
     cur_y = yx[0]
@@ -78,11 +97,5 @@ def solve(board):
         board[y][x] = 0
     return False
 
-print_puzzle(board)
-print('\n')
-solve(board)
 
-print_puzzle(board)
-
-
-
+print_puzzle(board2)
