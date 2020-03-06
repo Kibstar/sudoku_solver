@@ -13,18 +13,18 @@ board = [
 
 s = '123456789123456789123456789123456789123456789123456789123456789123456789123456789'
 s2 = '....717..1.2..25868.2388...129.9.89184...9488.7..3..161899.92.5.9.589.7942.72..12'
+
 def string_to_list(s):
     main_list =[]
     sub_list = []
     for i, j in enumerate(s):
-        if len(sub_list) == 9:
-            main_list.append(sub_list)
-            sub_list = []
         try:
             sub_list.append(int(j))
         except:
             sub_list.append(0)
-    main_list.append(sub_list)
+        if len(sub_list) == 9:
+            main_list.append(sub_list)
+            sub_list = []
     return main_list
 
 
